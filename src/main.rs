@@ -78,7 +78,7 @@ fn breadth_first_search(graph: &HashMap<String, Vec<String>>, start_country:&str
                 if !visited.contains_key(neighbour)
                 {
                     visited.insert(neighbour.to_string(), Some(country.to_string()));
-                    queue.push_back((neighbour.to_string()));
+                    queue.push_back(neighbour.to_string());
                 }
             }
         }
