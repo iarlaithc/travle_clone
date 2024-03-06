@@ -88,6 +88,18 @@ fn breadth_first_search(graph: &HashMap<String, Vec<String>>, start_country:&str
 
 }
 
+fn fetch_country_name_from_code(code:&str, data:&Vec<BorderCountryRow>) -> Option<String>
+{
+    for row in data
+    {
+        if row.country_code == code 
+        {
+            return Some(row.country_name.clone());
+        }
+    }
+    None
+}
+
 fn main() -> Result<(), Box<dyn Error>> 
 {
 
@@ -98,6 +110,10 @@ fn main() -> Result<(), Box<dyn Error>>
     let data = read_data_from_csv(filepath)?;
     let graph = create_graph(&data);
     
+    let c1_name = fetch_country_name_from_code(country1, &data).unwrap_or(String::from("Unknown Country"));
+    let c2_name = fetch_country_name_from_code(country2, &data).unwrap_or(String::from("Unknown Country"));
+    println!("Travel from {} to {} with the following path!", c1_name, c2_name);
+
     let path = breadth_first_search(&graph, country1, country2);
     
     match path {
