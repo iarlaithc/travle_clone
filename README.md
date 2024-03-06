@@ -7,4 +7,4 @@ ToDo:
  - Hint if country guessed is near but not perfect on the list?
  - Regex for country names guesses / suggestions for guesser.
  - Score system.
- - Better GUI than CLI.
+ - Better GUI than CLI
